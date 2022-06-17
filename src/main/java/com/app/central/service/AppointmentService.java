@@ -18,6 +18,7 @@ public class AppointmentService implements IAppointmentService {
     @Override
     public void persistAppointment(Appointment appointment) {
         AppointmentEntity appointmentEntity= new AppointmentEntity();
+        appointmentEntity.setId(appointment.getId());
         appointmentEntity.setAppointmentTime(appointment.getAppointmentTime());
         appointmentEntity.setPersonId(appointment.getPersonId());
         appointmentEntity.setModified(appointment.getModified());
