@@ -1,15 +1,20 @@
 package com.app.central.dao;
+import com.app.central.jpa.AppointmentEntity;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.ResourceUtils;
-//import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-//@Transactional
+@Transactional
 @Repository
 public class AppointmentDAO implements IAppointmentDAO {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Override
+    public void persistAppointment(AppointmentEntity entity) {
+        entityManager.persist(entity);
+    }
 }
