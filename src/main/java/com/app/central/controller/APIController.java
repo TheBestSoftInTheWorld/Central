@@ -11,17 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("api/")
 public class APIController {
     @Autowired
     private IAppointmentService iAppointmentService;
 
-    @RequestMapping(method = RequestMethod.POST, value = "updateAppointment")
+    @RequestMapping(method = RequestMethod.POST, value = "persistAppointments")
     @ResponseBody
-    public ResponseEntity updateAppointment(@RequestBody Appointment appointment) {
+    public ResponseEntity persistAppointments(@RequestBody List<Appointment> appointments) {
         try {
-            iAppointmentService.persistAppointment(appointment);
+            iAppointmentService.persistAppointments(appointments);
             return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);

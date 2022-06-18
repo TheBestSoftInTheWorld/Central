@@ -12,11 +12,13 @@ public class AppointmentEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true, nullable = false)
     public long id;
-
+    @Column(name = "APPOINTMENTTIME")
     Date appointmentTime;
+    @Column(name = "PERSONID")
     long personId;
     Date modified;
     String reason;
+    @Enumerated(EnumType.STRING)
     StateEnum state;
 
     public long getId() {

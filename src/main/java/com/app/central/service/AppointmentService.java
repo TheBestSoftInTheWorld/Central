@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class AppointmentService implements IAppointmentService {
@@ -16,8 +17,13 @@ public class AppointmentService implements IAppointmentService {
 
 
     @Override
+    public void persistAppointments(List<Appointment> appointments) {
+        appointments.stream().forEach(tmp -> persistAppointment(tmp));
+    }
+
+    @Override
     public void persistAppointment(Appointment appointment) {
-        AppointmentEntity appointmentEntity= new AppointmentEntity();
+        AppointmentEntity appointmentEntity = new AppointmentEntity();
         appointmentEntity.setId(appointment.getId());
         appointmentEntity.setAppointmentTime(appointment.getAppointmentTime());
         appointmentEntity.setPersonId(appointment.getPersonId());
