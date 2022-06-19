@@ -5,6 +5,6 @@ import com.app.central.model.Appointment;
 import java.util.List;
 
 public interface IAppointmentService {
-    void persistAppointments(List<Appointment> appointmens);
-    void persistAppointment(Appointment appointmen);
+    List<Long> persistAppointments(List<Appointment> appointmens);
+    long persistAppointment(Appointment appointmen);
 }
