@@ -16,14 +16,14 @@ public class AppointmentService implements IAppointmentService {
 
 
     @Override
-    public List<Long> persistAppointments(List<Appointment> appointments) {
+    public List<Long> saveAppointments(List<Appointment> appointments) {
         List<Long> ids = new ArrayList<>();
-        appointments.stream().forEach(tmp -> ids.add(persistAppointment(tmp)));
+        appointments.stream().forEach(tmp -> ids.add(saveAppointments(tmp)));
         return ids;
     }
 
     @Override
-    public long persistAppointment(Appointment appointment) {
+    public long saveAppointments(Appointment appointment) {
         AppointmentEntity appointmentEntity = new AppointmentEntity();
         appointmentEntity.setId(appointment.getId());
         appointmentEntity.setAppointmentTime(appointment.getAppointmentTime());
@@ -31,6 +31,6 @@ public class AppointmentService implements IAppointmentService {
         appointmentEntity.setModified(appointment.getModified());
         appointmentEntity.setReason(appointment.getReason());
         appointmentEntity.setState(appointment.getState());
-        return iAppointmentDAO.persistAppointment(appointmentEntity);
+        return iAppointmentDAO.saveAppointments(appointmentEntity);
     }
 }

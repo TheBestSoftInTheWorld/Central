@@ -23,7 +23,7 @@ public class AppointmentDAO implements IAppointmentDAO {
     private AppointmentRepository appointmentRepository;
 
     @Override
-    public long persistAppointment(AppointmentEntity entity) {
+    public long saveAppointments(AppointmentEntity entity) {
 
         try {
             if (entity.getId() == 0) {
