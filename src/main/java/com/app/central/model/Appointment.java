@@ -3,12 +3,12 @@ package com.app.central.model;
 import java.util.Date;
 
 public class Appointment {
-    long id;
-    Date appointmentTime;
-    long personId;
-    Date modified;
-    String reason;
-    StateEnum state;
+    public long id;
+    public Date appointmentTime;
+    public long personId;
+    public Date modified;
+    public String reason;
+    public StateEnum state;
 
     public Appointment(long id, Date appointmentTime, long personId, Date modified, String reason, StateEnum state) {
         this.id = id;
