@@ -12,6 +12,10 @@ public class AppointmentEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true, nullable = false)
     public long id;
+    @Column(name = "EXTERNALID")
+    public long externalId;
+    @Column(name = "COMPANYID")
+    public long companyId;
     @Column(name = "APPOINTMENTTIME")
     Date appointmentTime;
     @Column(name = "PERSONID")
@@ -67,5 +71,21 @@ public class AppointmentEntity {
 
     public void setState(StateEnum state) {
         this.state = state;
+    }
+
+    public long getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(long externalId) {
+        this.externalId = externalId;
+    }
+
+    public long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(long companyId) {
+        this.companyId = companyId;
     }
 }

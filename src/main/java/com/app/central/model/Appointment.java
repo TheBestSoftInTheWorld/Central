@@ -4,20 +4,14 @@ import java.util.Date;
 
 public class Appointment {
     public long id;
+    public long externalId;
+    public long companyId;
     public Date appointmentTime;
     public long personId;
     public Date modified;
     public String reason;
     public StateEnum state;
 
-    public Appointment(long id, Date appointmentTime, long personId, Date modified, String reason, StateEnum state) {
-        this.id = id;
-        this.appointmentTime = appointmentTime;
-        this.personId = personId;
-        this.modified = modified;
-        this.reason = reason;
-        this.state = state;
-    }
     public long getId() {
         return id;
     }
@@ -64,5 +58,21 @@ public class Appointment {
 
     public void setState(StateEnum state) {
         this.state = state;
+    }
+
+    public long getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(long externalId) {
+        this.externalId = externalId;
+    }
+
+    public long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(long companyId) {
+        this.companyId = companyId;
     }
 }
