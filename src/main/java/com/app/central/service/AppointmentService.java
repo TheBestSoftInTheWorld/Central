@@ -6,7 +6,7 @@ import com.app.central.model.Appointment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Service
@@ -16,14 +16,12 @@ public class AppointmentService implements IAppointmentService {
 
 
     @Override
-    public List<Long> saveAppointments(List<Appointment> appointments) {
-        List<Long> ids = new ArrayList<>();
-        appointments.stream().forEach(appointment -> ids.add(saveAppointment(appointment)));
-        return ids;
+    public void saveAppointments(List<Appointment> appointments) {
+        appointments.stream().forEach(appointment -> saveAppointment(appointment));
     }
 
     @Override
-    public long saveAppointment(Appointment appointment) {
+    public void saveAppointment(Appointment appointment) {
         AppointmentEntity appointmentEntity = new AppointmentEntity();
         appointmentEntity.setId(appointment.getId());
         appointmentEntity.setAppointmentTime(appointment.getAppointmentTime());
@@ -31,8 +29,8 @@ public class AppointmentService implements IAppointmentService {
         appointmentEntity.setModified(appointment.getModified());
         appointmentEntity.setReason(appointment.getReason());
         appointmentEntity.setState(appointment.getState());
-        appointmentEntity.setExternalId(appointment.getExternalId());
+        appointmentEntity.setRemoteAppointmentId(appointment.getRemoteAppointmentId());
         appointmentEntity.setCompanyId(appointment.getCompanyId());
-        return iAppointmentDAO.saveAppointments(appointmentEntity);
+        iAppointmentDAO.saveAppointment(appointmentEntity);
     }
 }

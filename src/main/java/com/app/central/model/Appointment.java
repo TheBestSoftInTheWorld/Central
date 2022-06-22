@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Appointment {
     public long id;
-    public long externalId;
+    public long remoteAppointmentId;
     public long companyId;
     public Date appointmentTime;
     public long personId;
@@ -60,12 +60,12 @@ public class Appointment {
         this.state = state;
     }
 
-    public long getExternalId() {
-        return externalId;
+    public long getRemoteAppointmentId() {
+        return remoteAppointmentId;
     }
 
-    public void setExternalId(long externalId) {
-        this.externalId = externalId;
+    public void setRemoteAppointmentId(long remoteAppointmentId) {
+        this.remoteAppointmentId = remoteAppointmentId;
     }
 
     public long getCompanyId() {

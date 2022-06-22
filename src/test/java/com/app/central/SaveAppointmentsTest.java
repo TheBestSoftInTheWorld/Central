@@ -35,10 +35,5 @@ public class SaveAppointmentsTest {
         ResponseEntity<String> result = restTemplate.exchange(API_PERSIST, HttpMethod.POST, entity, String.class);
         assertThat(result.getStatusCode().equals(HttpStatus.OK));
     }
-    @Test
-    public void saveAppointmentsService() throws Exception {
-        List<Appointment> appointmentListForSave = new ArrayList<>();
-        List<Long> result=iAppointmentService.saveAppointments(appointmentListForSave);
-        assertThat(result.size()==0);
-    }
+
 }

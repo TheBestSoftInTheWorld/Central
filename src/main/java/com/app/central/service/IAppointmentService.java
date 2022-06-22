@@ -5,6 +5,7 @@ import com.app.central.model.Appointment;
 import java.util.List;
 
 public interface IAppointmentService {
-    List<Long> saveAppointments(List<Appointment> appointments);
-    long saveAppointment(Appointment appointment);
+    void saveAppointments(List<Appointment> appointments);
+
+    void saveAppointment(Appointment appointment);
 }

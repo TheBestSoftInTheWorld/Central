@@ -12,8 +12,8 @@ public class AppointmentEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true, nullable = false)
     public long id;
-    @Column(name = "EXTERNALID")
-    public long externalId;
+    @Column(name = "REMONTEAPPOINTMENTID")
+    public long remoteAppointmentId;
     @Column(name = "COMPANYID")
     public long companyId;
     @Column(name = "APPOINTMENTTIME")
@@ -73,12 +73,12 @@ public class AppointmentEntity {
         this.state = state;
     }
 
-    public long getExternalId() {
-        return externalId;
+    public long getRemoteAppointmentId() {
+        return remoteAppointmentId;
     }
 
-    public void setExternalId(long externalId) {
-        this.externalId = externalId;
+    public void setRemoteAppointmentId(long remoteAppointmentId) {
+        this.remoteAppointmentId = remoteAppointmentId;
     }
 
     public long getCompanyId() {
