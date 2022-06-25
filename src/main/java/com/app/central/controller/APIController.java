@@ -22,10 +22,9 @@ public class APIController {
 
     @RequestMapping(method = RequestMethod.POST, value = "saveAppointments")
     @ResponseBody
-    public ResponseEntity saveAppointments(@RequestBody List<Appointment> appointments) {
+    public ResponseEntity<List<Long>> saveAppointments(@RequestBody List<Appointment> appointments) {
         try {
-            iAppointmentService.saveAppointments(appointments);
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<List<Long>>(iAppointmentService.saveAppointments(appointments), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }

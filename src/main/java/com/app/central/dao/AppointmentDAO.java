@@ -27,12 +27,18 @@ public class AppointmentDAO implements IAppointmentDAO {
     private AppointmentRepository appointmentRepository;
 
     @Override
-    public void saveAppointment(AppointmentEntity entity) {
+    public Long saveAppointment(AppointmentEntity entity) {
 
         try {
             Optional<AppointmentEntity> ae = findAppointment(entity.getCompanyId(), entity.getRemoteAppointmentId());
 
             if (ae.isPresent()) {
+                if(entity.getModified().before(ae.get().getModified())){
+                    logger.info( "Appointment " + entity.getRemoteAppointmentId() + " modified date is incorrect. Modified date from our database is "+ae.get().getModified()+"." +
+                            " Your modified date is "+entity.getModified());
+                    //TODO Inform client about problem
+                    return entity.getRemoteAppointmentId();
+                }
                 entity.setId(ae.get().getId());
                 String changes = null;
                 if (!entity.getAppointmentTime().equals(ae.get().getAppointmentTime())) {
@@ -55,6 +61,14 @@ public class AppointmentDAO implements IAppointmentDAO {
                         changes = changes + ", " + tmp;
                     }
                 }
+                if (entity.getPersonId()!=ae.get().getPersonId()) {
+                    String tmp = "changed personId from " + entity.getState() + " to " + ae.get().getState();
+                    if (changes == null) {
+                        changes = tmp;
+                    } else {
+                        changes = changes + ", " + tmp;
+                    }
+                }
                 if (changes == null) {
                     changes = "Appointment " + ae.get().getRemoteAppointmentId() + " has the same data";
                 } else {
@@ -67,11 +81,11 @@ public class AppointmentDAO implements IAppointmentDAO {
                 appointmentRepository.save(entity);
                 logger.info("Create new appointment " + entity.getRemoteAppointmentId());
             }
-
+            return entity.getRemoteAppointmentId();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return null;
     }
 
     @Override

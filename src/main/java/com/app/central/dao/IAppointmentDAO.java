@@ -5,7 +5,7 @@ import com.app.central.jpa.AppointmentEntity;
 import java.util.Optional;
 
 public interface IAppointmentDAO {
-    void saveAppointment(AppointmentEntity entity);
+    Long saveAppointment(AppointmentEntity entity);
 
     Optional<AppointmentEntity> findAppointment(long companyId, long remoteAppointmentId);
 }
