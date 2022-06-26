@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppointmentService implements IAppointmentService {
@@ -34,5 +35,12 @@ public class AppointmentService implements IAppointmentService {
         appointmentEntity.setRemoteAppointmentId(appointment.getRemoteAppointmentId());
         appointmentEntity.setCompanyId(appointment.getCompanyId());
         return iAppointmentDAO.saveAppointment(appointmentEntity);
+    }
+    @Override
+    public void removeAppointment(long companyId, long remoteAppointmentId){
+        Optional<AppointmentEntity> appointmentEntity =iAppointmentDAO.findAppointment(companyId, remoteAppointmentId);
+        if(appointmentEntity.isPresent()){
+            iAppointmentDAO.removeAppointment(appointmentEntity.get());
+        }
     }
 }

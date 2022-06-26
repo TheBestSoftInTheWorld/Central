@@ -12,6 +12,16 @@ public class Appointment {
     public String reason;
     public StateEnum state;
 
+    public Appointment(long remoteAppointmentId, long companyId, Date appointmentTime, long personId, Date modified, String reason, StateEnum state) {
+        this.remoteAppointmentId = remoteAppointmentId;
+        this.companyId = companyId;
+        this.appointmentTime = appointmentTime;
+        this.personId = personId;
+        this.modified = modified;
+        this.reason = reason;
+        this.state = state;
+    }
+
     public long getId() {
         return id;
     }

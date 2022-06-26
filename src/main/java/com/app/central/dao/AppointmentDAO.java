@@ -107,4 +107,9 @@ public class AppointmentDAO implements IAppointmentDAO {
         }
         return appointmentEntity;
     }
+
+    @Override
+    public void removeAppointment(AppointmentEntity entity){
+        entityManager.remove(entity);
+    }
 }

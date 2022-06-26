@@ -8,4 +8,6 @@ public interface IAppointmentService {
     List<Long> saveAppointments(List<Appointment> appointments);
 
     Long saveAppointment(Appointment appointment);
+
+    void removeAppointment(long companyId, long remoteAppointmentId);
 }

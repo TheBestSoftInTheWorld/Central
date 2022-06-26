@@ -7,5 +7,7 @@ import java.util.Optional;
 public interface IAppointmentDAO {
     Long saveAppointment(AppointmentEntity entity);
 
+    void removeAppointment(AppointmentEntity entity);
+
     Optional<AppointmentEntity> findAppointment(long companyId, long remoteAppointmentId);
 }
